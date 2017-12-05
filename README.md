@@ -24,7 +24,7 @@ gabethecabbage.elrepo
     ---
     - hosts: servers
       roles:
-        - role: gabethecabbage.gnome2-mate
+        - role: gabethecabbage.traditional-desktop
     ...
 
 ## License
