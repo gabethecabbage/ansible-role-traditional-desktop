@@ -17,7 +17,7 @@
     name: "@^gnome-desktop"
     state: absent
   when:
-     - remove_gnome_3 == "true"
+     - remove_gnome_3 == True
      - ansible_os_family == "RedHat"
      - ansible_distribution_major_version == "7"
 
