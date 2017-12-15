@@ -1,4 +1,4 @@
 ---
-headless: "false"
-remove_gnome_3: "true"
+headless: False
+remove_gnome_3: True
 ...
