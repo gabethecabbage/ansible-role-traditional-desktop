@@ -1,6 +1,5 @@
 ---
 - name: desktop_installed
   shell: "systemctl set-default graphical.target"
-  when:
-    - headless == False
+  when: headless == False
 ...
