@@ -10,14 +10,14 @@
      - "@^Fonts"
      
 - name: Enable graphical booting (if 'headless == False')
-- lineinfile:
+  lineinfile:
     path: /etc/hosts
     regexp: '^id:\d:initdefault:'
     line: 'id:5:initdefault:'
   when: headless == False
   
 - name: Disable graphical booting  (if 'headless == True')
-- lineinfile:
+  lineinfile:
     path: /etc/hosts
     regexp: '^id:\d:initdefault:'
     line: 'id:3:initdefault:'
