@@ -14,10 +14,10 @@ galaxy_info:
         - 7
     - name: Ubuntu
       versions:
-        - 16.04
-        - 16.10
-        - 17.04
-        - 17.10
+        - xenial
+        - yakkety
+        - zesty
+        - artful
   galaxy_tags:
     - desktop
     - mate
