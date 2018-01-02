@@ -1,0 +1,34 @@
+---
+- name: "'gnome-session' packages not installed"
+  apt:
+    name: "{{ item }}"
+    state: absent
+    purge: yes
+  when: remove_gnome_3 == True
+  with_items:
+     - gnome-session
+     - gnome-backgrounds
+     - gnome-tweak-tool
+
+- name: "lightdm installed (if 'remove_gnome_3 == True')"
+  apt:
+    name: lightdm
+    state: present
+  when: remove_gnome_3 == True
+  with_items:
+     - lightdm
+     - unity-greeter  
+     
+- name: "'mate-desktop-environment' group installed"
+  apt:
+    name: mate-desktop-environment
+    state: present
+
+- name: Enable graphical booting (if 'headless == False')
+  shell: "systemctl set-default graphical.target"
+  when: headless == False
+  
+- name: Disable graphical booting  (if 'headless == True')
+  shell: "systemctl set-default multi-user.target"
+  when: headless == True
+...

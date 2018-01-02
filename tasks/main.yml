@@ -1,40 +1,16 @@
 ---
-- name: gnome 2 installed (CentOS 6 only)
-  yum:
-    name: "{{ item }}"
-    state: present
+- import_tasks: rhel_6.yml
   when:
     - ansible_os_family == "RedHat"
     - ansible_distribution_major_version == "6"
-  with_items:
-     - "@^Desktop"
-     - "@^Desktop Platform"
-     - "@^X Window System"
-     - "@^Fonts"
-
-- name: "'gnome-desktop' group not installed (CentOS 7 only)"
-  yum:
-    name: "@^gnome-desktop"
-    state: absent
-  when:
-     - remove_gnome_3 == True
-     - ansible_os_family == "RedHat"
-     - ansible_distribution_major_version == "7"
-
-- name: "'X Window system' group installed (CentOS 7 only)"
-  yum:
-    name: "@X Window System"
-    state: present
+    
+- import_tasks: rhel_7.yml
   when:
     - ansible_os_family == "RedHat"
     - ansible_distribution_major_version == "7"
 
-- name: "'Mate-desktop' group installed (CentOS 7 only)"
-  yum:
-    name: "@^MATE Desktop"
-    state: present
-  when:
-    - ansible_os_family == "RedHat"    
-    - ansible_distribution_major_version == "7"
-  notify: desktop_installed
+- import_tasks: ubuntu_16+.yml
+  when: 
+  - ansible_distribution == 'Ubuntu'
+  - "{{ ansible_distribution_version | version_compare('16.04', '>=') }}"
 ...

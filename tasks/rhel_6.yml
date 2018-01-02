@@ -1,0 +1,25 @@
+---
+- name: gnome 2 installed (CentOS 6 only)
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items:
+     - "@^Desktop"
+     - "@^Desktop Platform"
+     - "@^X Window System"
+     - "@^Fonts"
+     
+- name: Enable graphical booting (if 'headless == False')
+- lineinfile:
+    path: /etc/hosts
+    regexp: '^id:\d:initdefault:'
+    line: 'id:5:initdefault:'
+  when: headless == False
+  
+- name: Disable graphical booting  (if 'headless == True')
+- lineinfile:
+    path: /etc/hosts
+    regexp: '^id:\d:initdefault:'
+    line: 'id:3:initdefault:'
+  when: headless == True
+...

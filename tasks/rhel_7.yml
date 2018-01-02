@@ -1,0 +1,27 @@
+---
+- name: "'gnome-desktop' group not installed"
+  yum:
+    name: "@^gnome-desktop"
+    state: absent
+  when:
+     - remove_gnome_3 == True
+
+- name: "'X Window system' group installed"
+  yum:
+    name: "@X Window System"
+    state: present
+
+- name: "'Mate-desktop' group installed"
+  yum:
+    name: "@^MATE Desktop"
+    state: present
+  notify: desktop_installed
+  
+- name: Enable graphical booting (if 'headless == False')
+  shell: "systemctl set-default graphical.target"
+  when: headless == False
+  
+- name: Disable graphical booting  (if 'headless == True')
+  shell: "systemctl set-default multi-user.target"
+  when: headless == True
+...
