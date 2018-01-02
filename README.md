@@ -1,8 +1,10 @@
 # ansible-role-traditional-desktop
 
-Ensure a traditional desktop enviroment (gnome 2/mate) is installed on RHEL
+Ensure a traditional desktop enviroment (gnome 2/mate) is installed on RHEL/Ubuntu. e.g.
 
-On RHEL 6 this means Gnome 2 is installed, on RHEL 7 MATE is installed from the ELREPO
+- RHEL 6: Gnome 2 is installed
+- RHEL 7: MATE is installed from the ELREPO
+- Ubuntu: MATE is installed from the universe repository
 
 ## Requirements
 
@@ -10,10 +12,10 @@ None
 
 ## Role Variables
 
-| Variable Name             | Defaults | Description                                                        |
-|---------------------------|----------|--------------------------------------------------------------------|
-| headless                  |False     | If true, the display manager won't be enabled                      |
-| remove_gnome_3            |True      | by default role removes gnome 3, set to false is this is not wanted|
+| Variable Name             | Defaults | Description                                            |
+|---------------------------|----------|--------------------------------------------------------|
+| headless                  |False     | If true, the display manager/gui init will be disabled |
+| remove_gnome_3            |False     | If true, removes gnome 3 where present                 |
 
 ## Dependencies
 
