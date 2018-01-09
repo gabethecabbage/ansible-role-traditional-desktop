@@ -15,7 +15,6 @@
   yum:
     name: "@^MATE Desktop"
     state: present
-  notify: desktop_installed
   
 - name: Enable graphical booting (if 'headless == False')
   shell: "systemctl set-default graphical.target"
